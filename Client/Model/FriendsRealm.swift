@@ -20,7 +20,7 @@ class Friend: Object {
     }
     
     // этот инит обязателен для Object
-    required init() {
+    required override init() {
         super.init()
     }
 }

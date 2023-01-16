@@ -15,6 +15,10 @@
 		3FEAEEC52975972600237C9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAEEC42975972600237C9F /* LoginViewController.swift */; };
 		3FEAEEC82975974A00237C9F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAEEC72975974A00237C9F /* Session.swift */; };
 		3FEAEECA297599E400237C9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FEAEEC9297599E400237C9F /* GoogleService-Info.plist */; };
+		3FEAEECD2975A0E100237C9F /* FriendsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAEECC2975A0E100237C9F /* FriendsRealm.swift */; };
+		3FEAEECF2975A10100237C9F /* PhotoRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAEECE2975A10100237C9F /* PhotoRealm.swift */; };
+		3FEAEED12975A11F00237C9F /* GroupRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAEED02975A11F00237C9F /* GroupRealm.swift */; };
+		3FEAEED32975A28C00237C9F /* PostNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAEED22975A28C00237C9F /* PostNews.swift */; };
 		966767F206D5EB26C1D60E0B /* Pods_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060E1EF45358E22AEEF21D52 /* Pods_Client.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +34,10 @@
 		3FEAEEC42975972600237C9F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3FEAEEC72975974A00237C9F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		3FEAEEC9297599E400237C9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3FEAEECC2975A0E100237C9F /* FriendsRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRealm.swift; sourceTree = "<group>"; };
+		3FEAEECE2975A10100237C9F /* PhotoRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRealm.swift; sourceTree = "<group>"; };
+		3FEAEED02975A11F00237C9F /* GroupRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRealm.swift; sourceTree = "<group>"; };
+		3FEAEED22975A28C00237C9F /* PostNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNews.swift; sourceTree = "<group>"; };
 		9F9B363DA9480D0D9F1EC519 /* Pods-Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.debug.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.debug.xcconfig"; sourceTree = "<group>"; };
 		CFB1E50DE4EB2435013EC3E4 /* Pods-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.release.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,13 +75,11 @@
 		3FEAEEAD29756B1E00237C9F /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				3FEAEEB429756B1E00237C9F /* Main.storyboard */,
+				3FEAEEB929756B3000237C9F /* LaunchScreen.storyboard */,
+				3FEAEECB2975A08900237C9F /* Model */,
 				3FEAEEC3297595DE00237C9F /* APP */,
 				3FEAEEC2297595B300237C9F /* VC */,
-				3FEAEEB429756B1E00237C9F /* Main.storyboard */,
-				3FEAEEB729756B3000237C9F /* Assets.xcassets */,
-				3FEAEEB929756B3000237C9F /* LaunchScreen.storyboard */,
-				3FEAEEC9297599E400237C9F /* GoogleService-Info.plist */,
-				3FEAEEBC29756B3000237C9F /* Info.plist */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -89,6 +95,9 @@
 		3FEAEEC3297595DE00237C9F /* APP */ = {
 			isa = PBXGroup;
 			children = (
+				3FEAEEB729756B3000237C9F /* Assets.xcassets */,
+				3FEAEEC9297599E400237C9F /* GoogleService-Info.plist */,
+				3FEAEEBC29756B3000237C9F /* Info.plist */,
 				3FEAEEAE29756B1E00237C9F /* AppDelegate.swift */,
 				3FEAEEB029756B1E00237C9F /* SceneDelegate.swift */,
 			);
@@ -99,9 +108,20 @@
 			isa = PBXGroup;
 			children = (
 				3FEAEEC42975972600237C9F /* LoginViewController.swift */,
-				3FEAEEC72975974A00237C9F /* Session.swift */,
 			);
 			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		3FEAEECB2975A08900237C9F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3FEAEECC2975A0E100237C9F /* FriendsRealm.swift */,
+				3FEAEECE2975A10100237C9F /* PhotoRealm.swift */,
+				3FEAEED02975A11F00237C9F /* GroupRealm.swift */,
+				3FEAEED22975A28C00237C9F /* PostNews.swift */,
+				3FEAEEC72975974A00237C9F /* Session.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D2CCD8378E136F0F98DE2159 /* Frameworks */ = {
@@ -240,7 +260,11 @@
 				3FEAEEC82975974A00237C9F /* Session.swift in Sources */,
 				3FEAEEC52975972600237C9F /* LoginViewController.swift in Sources */,
 				3FEAEEAF29756B1E00237C9F /* AppDelegate.swift in Sources */,
+				3FEAEED12975A11F00237C9F /* GroupRealm.swift in Sources */,
+				3FEAEED32975A28C00237C9F /* PostNews.swift in Sources */,
 				3FEAEEB129756B1E00237C9F /* SceneDelegate.swift in Sources */,
+				3FEAEECF2975A10100237C9F /* PhotoRealm.swift in Sources */,
+				3FEAEECD2975A0E100237C9F /* FriendsRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

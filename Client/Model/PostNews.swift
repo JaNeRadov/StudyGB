@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 struct PostNews {
     var name: String
     var avatar: UIImage?

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Bc-4a-IR8">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -297,7 +297,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="8Bz-hH-D8j" kind="presentation" modalPresentationStyle="fullScreen" id="bCk-pX-7tu"/>
+                        <outlet property="webView" destination="MA5-P7-QY5" id="3wc-gA-uVV"/>
+                        <segue destination="8Bz-hH-D8j" kind="presentation" identifier="AuthVKSuccessful" modalPresentationStyle="fullScreen" id="bCk-pX-7tu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VkD-yI-9o1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -547,8 +548,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="avatarGroupView" destination="ltA-w8-Wq2" id="UCu-fl-onu"/>
-                                    <outlet property="nameGroupLabel" destination="6mB-2B-HG4" id="W8R-PN-qcF"/>
+                                    <outlet property="avatarGroupView" destination="ltA-w8-Wq2" id="gTW-Vi-r0m"/>
+                                    <outlet property="nameGroupLable" destination="6mB-2B-HG4" id="NnS-EF-CI6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

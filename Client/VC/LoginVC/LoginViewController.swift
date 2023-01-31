@@ -10,22 +10,26 @@ import WebKit
 import FirebaseDatabase
 
 class LoginViewController: UIViewController {
-
+    
     var session = Session.instance
+    
+    @IBOutlet weak var webView: WKWebView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
-//        removeCookie() //очистка куки, чтобы заново ввести логин и пароль
+        //        removeCookie() //очистка куки, чтобы заново ввести логин и пароль
         loadAuthVK()
     }
     
-    @IBOutlet weak var webView: WKWebView!
+
+    
     
     // MARK: - Firebase
     
-//    lazy var database = Database.database()
-//    lazy var ref: DatabaseReference = self.database.reference(withPath: "All logged users")
+    //    lazy var database = Database.database()
+    //    lazy var ref: DatabaseReference = self.database.reference(withPath: "All logged users")
     
     
     // MARK: - Functions
@@ -86,27 +90,27 @@ extension LoginViewController: WKNavigationDelegate {
                 let value = param[1]
                 dict[key] = value
                 return dict
-        }
+            }
         
         //DispatchQueue.main.async {
-            if let token = params["access_token"], let userID = params["user_id"], let expiresIn = params["expires_in"] {
-                self.session.token = token
-                self.session.userId = Int(userID) ?? 0
-                self.session.expiredDate = Date(timeIntervalSinceNow: TimeInterval(Int(expiresIn) ?? 0))
-                
-                decisionHandler(.cancel)
-                 
-                writeUserToFirebase(userID)
-                //testWriteFireBase(userID)
-                
-                // переход на контроллер с логином и вход в приложение при успешной авторизации
-                self.performSegue(withIdentifier: "AuthVKSuccessful", sender: nil)
-            } else {
-                decisionHandler(.allow)
-                // просто переход на контроллер с логином при неуспешной авторизации
-                self.performSegue(withIdentifier: "AuthVKUnsuccessful", sender: nil)
-            }
-       // }
+        if let token = params["access_token"], let userID = params["user_id"], let expiresIn = params["expires_in"] {
+            self.session.token = token
+            self.session.userId = Int(userID) ?? 0
+            self.session.expiredDate = Date(timeIntervalSinceNow: TimeInterval(Int(expiresIn) ?? 0))
+            
+            decisionHandler(.cancel)
+            
+            writeUserToFirebase(userID)
+            //testWriteFireBase(userID)
+            
+            // переход на контроллер с логином и вход в приложение при успешной авторизации
+            self.performSegue(withIdentifier: "AuthVKSuccessful", sender: nil)
+        } else {
+            decisionHandler(.allow)
+            // просто переход на контроллер с логином при неуспешной авторизации
+            self.performSegue(withIdentifier: "AuthVKUnsuccessful", sender: nil)
+        }
+        // }
     }
     
     // MARK:  - Firebase
@@ -129,8 +133,8 @@ extension LoginViewController: WKNavigationDelegate {
                 //let user = snapshot.children
                 print("Текущий пользователь с ID \(userID) добавил следующие группы:\n\(user ?? "")")
                 
-//                let value = users.compactMap { $0.value }
-//                print("Пользователь: \(userID) добавил следующие группы: \(value)")
+                //                let value = users.compactMap { $0.value }
+                //                print("Пользователь: \(userID) добавил следующие группы: \(value)")
                 return
             }
             
@@ -140,17 +144,17 @@ extension LoginViewController: WKNavigationDelegate {
         }
     }
     
-//    private func testWriteFireBase(_ userID: String){
-//        // работаем с Firebase
-//        let database = Database.database()
-//        let ref: DatabaseReference = database.reference(withPath: "All logged users").child(userID)
-//
-//        // чтение из Firebase
-//        ref.observe(.value) { snapshot in
-//            //let users = snapshot.children.compactMap { $0 as? DataSnapshot }
-//            ref.child("xxx").setValue("yyy")
-//        }
-//    }
+    //    private func testWriteFireBase(_ userID: String){
+    //        // работаем с Firebase
+    //        let database = Database.database()
+    //        let ref: DatabaseReference = database.reference(withPath: "All logged users").child(userID)
+    //
+    //        // чтение из Firebase
+    //        ref.observe(.value) { snapshot in
+    //            //let users = snapshot.children.compactMap { $0 as? DataSnapshot }
+    //            ref.child("xxx").setValue("yyy")
+    //        }
+    //    }
     
 }
 

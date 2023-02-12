@@ -97,6 +97,7 @@ extension LoginViewController: WKNavigationDelegate {
             self.session.token = token
             self.session.userId = Int(userID) ?? 0
             self.session.expiredDate = Date(timeIntervalSinceNow: TimeInterval(Int(expiresIn) ?? 0))
+            print("Token = ", token)
             
             decisionHandler(.cancel)
             

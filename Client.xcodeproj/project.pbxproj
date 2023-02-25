@@ -22,6 +22,7 @@
 		3FAF75A4297947A000E23C25 /* PhotosFriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAF75A3297947A000E23C25 /* PhotosFriendCollectionViewCell.swift */; };
 		3FAF75A6297947FF00E23C25 /* FriendsPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAF75A5297947FF00E23C25 /* FriendsPhotosViewController.swift */; };
 		3FAF75A829794B9D00E23C25 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAF75A729794B9D00E23C25 /* CustomNavigationController.swift */; };
+		3FE783E429AA065B000F93AD /* GetNewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE783E329AA065B000F93AD /* GetNewsList.swift */; };
 		3FEAEEAF29756B1E00237C9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAEEAE29756B1E00237C9F /* AppDelegate.swift */; };
 		3FEAEEB129756B1E00237C9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAEEB029756B1E00237C9F /* SceneDelegate.swift */; };
 		3FEAEEB629756B1E00237C9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FEAEEB429756B1E00237C9F /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		3FAF75A3297947A000E23C25 /* PhotosFriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFriendCollectionViewCell.swift; sourceTree = "<group>"; };
 		3FAF75A5297947FF00E23C25 /* FriendsPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosViewController.swift; sourceTree = "<group>"; };
 		3FAF75A729794B9D00E23C25 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		3FE783E329AA065B000F93AD /* GetNewsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewsList.swift; sourceTree = "<group>"; };
 		3FEAEEAB29756B1E00237C9F /* Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FEAEEAE29756B1E00237C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FEAEEB029756B1E00237C9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				3FEAEEDD2975A8FF00237C9F /* SearchGroup.swift */,
 				3FEAEED72975A82700237C9F /* RealmOperation.swift */,
 				3FEAEEDF2975A93D00237C9F /* VKService.swift */,
+				3FE783E329AA065B000F93AD /* GetNewsList.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				3FAF759E29793FE900E23C25 /* FriendsTableViewCell.swift in Sources */,
 				3FEAEEAF29756B1E00237C9F /* AppDelegate.swift in Sources */,
 				3F0817AD298870E00090A53C /* NewGroupTableViewController.swift in Sources */,
+				3FE783E429AA065B000F93AD /* GetNewsList.swift in Sources */,
 				3FAF75A829794B9D00E23C25 /* CustomNavigationController.swift in Sources */,
 				3F0817B4298922970090A53C /* NewsTableViewController.swift in Sources */,
 				3FEAEED12975A11F00237C9F /* GroupRealm.swift in Sources */,

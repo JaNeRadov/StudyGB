@@ -155,7 +155,7 @@ class GetNewsList {
             URLQueryItem(name: "access_token", value: Session.instance.token),
             URLQueryItem(name: "filters", value: "post,photo"),
             URLQueryItem(name: "count", value: "10"),
-            URLQueryItem(name: "v", value: "5.122")
+            URLQueryItem(name: "v", value: "5.131")
         ]
               
         // задача для запуска

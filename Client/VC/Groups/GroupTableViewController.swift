@@ -35,6 +35,8 @@ class GroupTableViewController: UITableViewController {
     
     var myGroups: [Group] = []
     
+    lazy var imageCache = ImageCache(container: self.tableView) //для кэша картинок
+    
     //MARK: - TableView
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,11 +47,16 @@ class GroupTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsCell", for: indexPath) as! GroupTableViewCell
         
         cell.nameGroupLable.text = myGroups[indexPath.row].groupName
-        if let imgURL = URL(string: myGroups[indexPath.row].groupLogo) {
-            let avatar = ImageResource(downloadURL: imgURL) //арботает через kingfisher
-            cell.avatarGroupView.avatarImage.kf.indicatorType = .activity //арботает через kingfisher
-            cell .avatarGroupView.avatarImage.kf.setImage(with: avatar)
-        }
+//        if let imgURL = URL(string: myGroups[indexPath.row].groupLogo) {
+//            let avatar = ImageResource(downloadURL: imgURL) //арботает через kingfisher
+//            cell.avatarGroupView.avatarImage.kf.indicatorType = .activity //арботает через kingfisher
+//            cell .avatarGroupView.avatarImage.kf.setImage(with: avatar)
+//        }
+        
+        // аватар работает через кэш в ImageCache
+        let imgUrl = myGroups[indexPath.row].groupLogo
+        cell.avatarGroupView.avatarImage.image = imageCache.getPhoto(at: indexPath, url: imgUrl)
+        
         return cell
     }
     

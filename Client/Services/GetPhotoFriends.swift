@@ -65,7 +65,7 @@ class GetPhotosFriend {
         urlConstructor.queryItems = [
             URLQueryItem(name: "owner_id", value: ownerID),
             URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "v", value: "5.131")
+            URLQueryItem(name: "v", value: "5.122")
         ]
               
         // задача для запуска
@@ -79,7 +79,9 @@ class GetPhotosFriend {
                 let arrayPhotosFriend = try JSONDecoder().decode(PhotosResponse.self, from: data)
                 var photosFriend: [Photo] = []
                 var ownerID = ""
-
+                
+                guard arrayPhotosFriend.response.count != 0 else { return } // проверка на наличие фоток
+                    
                 for i in 0...arrayPhotosFriend.response.items.count-1 {
                     if let urlPhoto = arrayPhotosFriend.response.items[i].sizes.last?.url {
                         //ownerID = String(arrayPhotosFriend.response.items[i].owner_id)

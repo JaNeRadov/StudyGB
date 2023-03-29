@@ -19,15 +19,7 @@ struct GroupsResponse:  Decodable {
             var name: String
             var logo: String  // уже тут нужно писать желаемые названия
             var id: Int
-            
-            // не нужные в приложении поля, которые есть в json-е
-            //var id: Int
-            //var screen_name: String
-            //var photo_50: String
-            
-            // enum и init нужны если нужно иметь другие названия переменных в отличии от даннных в json
-            // например: logo = "photo_50" (я хочу: logo, а в jsone это: photo_50 )
-            // но все равно нужно указать другие значения, например: name (без уточнения)
+        
             enum CodingKeys: String, CodingKey {
                 case name
                 case logo = "photo_50"
@@ -45,6 +37,7 @@ struct GroupsResponse:  Decodable {
 
 }
 
+// Обычный способ загрузки данных, парсинг и запись в реалм
 class GetGroupsList {
     
     //данные для авторизации в ВК
@@ -64,7 +57,7 @@ class GetGroupsList {
             URLQueryItem(name: "user_id", value: String(Session.instance.userId)),
             URLQueryItem(name: "extended", value: "1"),
             URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "v", value: "5.131")
+            URLQueryItem(name: "v", value: "5.122")
         ]
         
         // задача для запуска
@@ -96,15 +89,5 @@ class GetGroupsList {
         
     }
     
-//    func saveGroupsToRealm(_ grougList: [Group]) {
-//        do {
-//            let realm = try Realm()
-//            try realm.write{
-//                realm.add(grougList)
-//            }
-//        } catch {
-//            print(error)
-//        }
-//    }
     
 }

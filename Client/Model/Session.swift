@@ -8,7 +8,6 @@
 import Foundation
 import SwiftKeychainWrapper
 
-
 class Session {
     private init() {}
     static let instance = Session()

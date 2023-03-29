@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 final class ImageCache {
     
     private let cacheLifeTime: TimeInterval = 30 * 24 * 60 * 60

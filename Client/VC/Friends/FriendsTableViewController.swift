@@ -17,12 +17,18 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         subscribeToNotificationRealm() // подписка на нотификации реалма + обновление таблицы
         
-        // запуск обновления данных из сети, запись в Реалм и загрузка из реалма новых данных
-//        GetFriendsList().loadData()
+        // Обычный запуск обновления данных из сети, запись в Реалм и загрузка из реалма новых данных
+        //GetFriendsList().loadData()
+        
+        // PromiseKit - обновления данных из сети, запись в Реалм
         GetFriendsListPromise().getData()
+        
+        // переработка в дженерики, нужно доработать
+        //        VKService().loadData(.friends) { () in
+        //        }
         
         searchBar.delegate = self
     }
@@ -43,7 +49,6 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate {
     var namesListFixed: [String] = [] //эталонный массив с именами для сравнения при поиске
     var namesListModifed: [String] = [] // массив с именами меняется (при поиске) и используется в таблице
     var letersOfNames: [String] = []
-    
     
     
     // MARK: - TableView
@@ -101,23 +106,51 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate {
         cell.avatarFriendView.avatarImage.kf.indicatorType = .activity
         cell.avatarFriendView.avatarImage.kf.setImage(with: avatar)
         
+        // работает через extension UIImageView
+        //        cell.avatarFriendView.avatarImage.load(url: imgUrl)
+        
+        
+        // старая реализация
+        // задать имя пользователя (ищет по буквам для расстановки по секциям) + сортировка по алфавиту
+        //        cell.nameFriendLabel.text = getNameFriendForCell(indexPath)
+        //print(indexPath)
+        
+        //        let name = self.getNameFriendForCell(indexPath)
+        //        cell.nameFriendLabel.text = name
+        
+        //задать аватар для друга (грузит по ссылке: 2 способа)
+        //        guard let imgUrl = getAvatarFriendForCell(indexPath) else { return cell }
+        //        let avatar = ImageResource(downloadURL: imgUrl) //работает через Kingfisher
+        //        cell.avatarFriendView.avatarImage.kf.indicatorType = .activity
+        //        cell.avatarFriendView.avatarImage.kf.setImage(with: avatar)
+        //        cell.avatarFriendView.avatarImage.load(url: imgUrl) // работает через extension UIImageView
+        
         return cell
     }
     
-    // кратковременное подсвечивание при нажатии на ячейку
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // кратковременное подсвечивание при нажатии на ячейку
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
     // MARK: - Functions
     
+    //тестовая функция для отображения времени
+    //    func printTime() {
+    //        let d = Date()
+    //        let df = DateFormatter()
+    //        df.dateFormat = "mm:ss.SSSS"
+    //
+    //        print(df.string(from: d))
+    //    }
+    
     private func subscribeToNotificationRealm() {
         notificationToken = friendsFromRealm.observe { [weak self] (changes) in
             switch changes {
             case .initial:
                 self?.loadFriendsFromRealm()
-                //case let .update (_, deletions, insertions, modifications):
+            //case let .update (_, deletions, insertions, modifications):
             case .update:
                 self?.loadFriendsFromRealm()
             case let .error(error):
@@ -176,6 +209,41 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate {
         return friendInfo[indexPath.row]
     }
     
+    
+    //    func getNameFriendForCell(_ indexPath: IndexPath) -> String {
+    //        var namesArray = [String]()
+    //        let letter = letersOfNames[indexPath.section]
+    //
+    //        for name in namesListModifed {
+    //            if letter.contains(name.first!) {
+    //                namesArray.append(name)
+    //            }
+    //        }
+    //        return namesArray[indexPath.row]
+    //    }
+    //
+    //    func getAvatarFriendForCell(_ indexPath: IndexPath) -> URL? {
+    //        let namesArray = getNameFriendForCell(indexPath)
+    //        for friend in friendsList {
+    //            if friend.userName.contains(namesArray) {
+    //                return URL(string: friend.userAvatar)
+    //            }
+    //        }
+    //        return nil
+    //    }
+    //
+    //    func getIDFriend(_ indexPath: IndexPath) -> String {
+    //        var ownerIDs = ""
+    //        let namesArray = getNameFriendForCell(indexPath)
+    //        for friend in friendsList {
+    //            if friend.userName.contains(namesArray) {
+    //                ownerIDs = friend.ownerID
+    //            }
+    //        }
+    //        return ownerIDs
+    //    }
+    
+    
     // MARK: - SearchBar
     
     // поиск по именам
@@ -199,6 +267,7 @@ class FriendsTableViewController: UITableViewController, UISearchBarDelegate {
         tableView.reloadData() //обновить таблицу
         searchBar.resignFirstResponder() // скрыть клавиатуру
     }
+    
     
     // MARK: - Segue
     

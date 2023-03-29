@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+
 class Group: Object {
     @objc dynamic var groupName: String = ""
     @objc dynamic var groupLogo: String  = ""

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 class SearchGroup {
     
     //данные для авторизации в ВК
@@ -25,7 +26,7 @@ class SearchGroup {
             URLQueryItem(name: "q", value: searchText),
             URLQueryItem(name: "type", value: "group"),
             URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "v", value: "5.131")
+            URLQueryItem(name: "v", value: "5.122")
         ]
         
         // задача для запуска
